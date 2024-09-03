@@ -1,38 +1,14 @@
-# **OGBV Lexicon Monitoring System**
-
-## **Table of Contents**
-
-1. [Overview](#overview)
-2. [Problem Statement](#problem-statement)
-3. [Objectives](#objectives)
-4. [Implementation](#implementation)
-5. [Project Structure](#project-structure)
-6. [Prerequisites for the Creation of Environment](#prerequisites-for-the-creation-of-environment)
-7. [Setup Instructions](#setup-instructions)
-8. [Running the System](#running-the-system)
-   - 8.1 [User Authentication](#user-authentication)
-   - 8.2 [The Emergence of Social Media Streams](#the-emergence-of-social-media-streams)
-   - 8.3 [Viewing the Dashboard](#viewing-the-dashboard)
-   - 8.4 [Generating Reports](#generating-reports)
-   - 8.5 [Accessing Non-Hypertext and Clandestine Sections](#accessing-non-hypertext-and-clandestine-sections)
-9. [Expected Outcomes](#expected-outcomes)
-10. [Advantages Over Traditional Methods](#advantages-over-traditional-methods)
-11. [Challenges and Mitigation Strategies](#challenges-and-mitigation-strategies)
-12. [Troubleshooting](#troubleshooting)
-
----
-
-## **1. Overview**
+**1. Overview**
 The OGBV Lexicon Monitoring System is an advanced solution designed to create a lexicon database specifically tailored for African languages and contexts. Utilizing AI and NLP, this system enhances the detection of online gender-based violence (OGBV) threats, ensuring sensitivity to cultural nuances and enabling real-time updates.
 
 ---
 
-## **2. Problem Statement**
+ **2. Problem Statement**
 Digital Gender-Based Violence (DGBV) is rampant, particularly affecting individuals based on their gender identity, with a pronounced impact in Africa due to its linguistic and cultural diversity. Existing detectors often fail to identify abusive language in African languages, rendering them ineffective in providing appropriate preventive measures against OGBV.
 
 ---
 
-## **3. Objectives**
+ **3. Objectives**
 
 **Main Objective:**  
 Develop an Online Gender-Based Violence (OGBV) lexicon database that is relevant for African languages and contexts to address the prevalence of OGBV and promote awareness.
@@ -46,7 +22,7 @@ Develop an Online Gender-Based Violence (OGBV) lexicon database that is relevant
 
 ---
 
-## **4. Implementation**
+ **4. Implementation**
 
 **Data Collection:**  
 Data is collected from social networks, forums, and other sites reporting OGBV cases using web scraping tools like **Scrapy** or via APIs.
@@ -59,7 +35,7 @@ A pipeline is created to feed fresh abusive language patterns into the lexicons,
 
 ---
 
-## **5. Project Structure**
+ **5. Project Structure**
 
 ```bash
 ├── README.md
@@ -98,7 +74,7 @@ A pipeline is created to feed fresh abusive language patterns into the lexicons,
 
 ---
 
-## **6. Prerequisites for the Creation of Environment**
+ **6. Prerequisites for the Creation of Environment**
 
 Ensure your environment meets the following requirements:
 
@@ -114,7 +90,7 @@ Ensure your environment meets the following requirements:
 
 ---
 
-## **7. Setup Instructions**
+ **7. Setup Instructions**
 
 **Clone the Repository:**
 
@@ -173,7 +149,7 @@ Open your web browser and navigate to `http://127.0.0.1:8000/`.
 
 ---
 
-## **8. Running the System**
+ **8. Running the System**
 
 ### **8.1 User Authentication**
 Navigate to the login page: `http://127.0.0.1:8000/login/`. Enter your credentials, and upon successful authentication, you will be directed to the dashboard.
@@ -185,16 +161,16 @@ The system supports real-time data collection from various social media platform
 - **Facebook:** Open `http://127.0.0.1:8000/start-facebook-stream/` to start streaming Facebook data.
 - **Instagram:** Collect Instagram data at `http://127.0.0.1:8000/start-instagram-stream/`.
 
-### **8.3 Viewing the Dashboard**
+ **8.3 Viewing the Dashboard**
 Access the dashboard at `http://127.0.0.1:8000/dashboard/` to view:
 - The latest tweets/posts tagged for OGBV.
 - The total number of entries for each ID.
 - Sentiment analysis charts based on temporal data.
 
-### **8.4 Generating Reports**
+ **8.4 Generating Reports**
 Generate a PDF report by navigating to `http://127.0.0.1:8000/generate-report/`. The report will include the latest data and be saved as ‘ogbv_report.pdf’.
 
-### **8.5 Accessing Non-Hypertext and Clandestine Sections**
+ **8.5 Accessing Non-Hypertext and Clandestine Sections**
 These sections provide additional context:
 
 - **Transparency:** `http://127.0.0.1:8000/transparency/`
@@ -202,7 +178,7 @@ These sections provide additional context:
 
 ---
 
-## **9. Expected Outcomes**
+ **9. Expected Outcomes**
 
 - **Centralized Database:** Continual archive of current OGBV lexica.
 - **Improved Detection:** Enhanced analysis of abusive language in African contexts.
@@ -210,7 +186,7 @@ These sections provide additional context:
 
 ---
 
-## **10. Advantages Over Traditional Methods**
+ **10. Advantages Over Traditional Methods**
 
 - **Dynamic and Real-Time Updates:** Provides accurate, up-to-date lexical semantics.
 - **Linguistic and Cultural Relevance:** Tailored to African languages and contexts.
@@ -218,13 +194,13 @@ These sections provide additional context:
 
 ---
 
-## **11. Challenges and Mitigation Strategies**
+ **11. Challenges and Mitigation Strategies**
 
-### **Data Privacy**
+ **Data Privacy**
 **Challenge:** Managing the large volumes of user data while ensuring personal privacy.  
 **Mitigation:** Implement data anonymization to comply with data protection laws.
 
-### **NLP Model Limitations**
+ **NLP Model Limitations**
 **Challenge:** NLP models may struggle with context shifts, irony, or sarcasm.  
 **Mitigation:** Regular training with new datasets and continuous model improvement.
 
@@ -234,9 +210,9 @@ These sections provide additional context:
 
 ---
 
-## **12. Troubleshooting**
+ **12. Troubleshooting**
 
-### **Server Not Starting**
+ **Server Not Starting**
 1. Ensure all dependencies are properly installed.
 2. Verify that the virtual environment is activated.
 
@@ -244,6 +220,6 @@ These sections provide additional context:
 1. Check the `.env` file to ensure all API keys and tokens are correctly entered.
 2. Confirm that the API key has the necessary permissions.
 
-### **Database Migrations Fail**
+**Database Migrations Fail**
 1. Run `python manage.py migrate` to apply migrations.
 2. Verify
