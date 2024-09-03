@@ -1,30 +1,249 @@
-Main Objective: Create a repository of Online Gender-Based Violence (OGBV) lexicons tailored to African languages and contexts to improve the detection and understanding of online violence.
-Implementation method: An AI-based lexicon generation and update system
+# **OGBV Lexicon Monitoring System**
 
-setup a virtual environment for the project: python -m venv venv
-activate the virtual environment: cd venv/Scripts then ./activate
-get back to root folder using cd .. (twice)
+## **Table of Contents**
 
-1.  ogbv_scraper
-    This folder contains a scraper tool done using scrapy
+1. [Overview](#overview)
+2. [Problem Statement](#problem-statement)
+3. [Objectives](#objectives)
+4. [Implementation](#implementation)
+5. [Project Structure](#project-structure)
+6. [Prerequisites for the Creation of Environment](#prerequisites-for-the-creation-of-environment)
+7. [Setup Instructions](#setup-instructions)
+8. [Running the System](#running-the-system)
+   - 8.1 [User Authentication](#user-authentication)
+   - 8.2 [The Emergence of Social Media Streams](#the-emergence-of-social-media-streams)
+   - 8.3 [Viewing the Dashboard](#viewing-the-dashboard)
+   - 8.4 [Generating Reports](#generating-reports)
+   - 8.5 [Accessing Non-Hypertext and Clandestine Sections](#accessing-non-hypertext-and-clandestine-sections)
+9. [Expected Outcomes](#expected-outcomes)
+10. [Advantages Over Traditional Methods](#advantages-over-traditional-methods)
+11. [Challenges and Mitigation Strategies](#challenges-and-mitigation-strategies)
+12. [Troubleshooting](#troubleshooting)
 
-         ogbv_scraper\ogbv_scraper\spiders\ogbv_spider.py - The main scraper directory
+---
 
-         in it, one can input the website he desires to scrape then runs the command: scrapy crawl ogbv
+## **1. Overview**
+The OGBV Lexicon Monitoring System is an advanced solution designed to create a lexicon database specifically tailored for African languages and contexts. Utilizing AI and NLP, this system enhances the detection of online gender-based violence (OGBV) threats, ensuring sensitivity to cultural nuances and enabling real-time updates.
 
-         a file will then be generated and copied one directory back for analysis
+---
 
-         on the command line run python gpt_analysis.py
-         This will produce another json file with the analysis done showing of the nature of sentence (if it gender based violent sentence)
+## **2. Problem Statement**
+Digital Gender-Based Violence (DGBV) is rampant, particularly affecting individuals based on their gender identity, with a pronounced impact in Africa due to its linguistic and cultural diversity. Existing detectors often fail to identify abusive language in African languages, rendering them ineffective in providing appropriate preventive measures against OGBV.
 
-         For the case of this project, preference is put on african website, post, blogs
+---
 
-2.  ogbv_monitoring
-    This folder contains django project encompassing django templating engine
+## **3. Objectives**
 
-        in this social media accounts (instagram, X, and facebook) are monitored
-        Analysis is given on the conversation that entails onine gender based violence and in addition to the openai,  #hashtags are used in identification
+**Main Objective:**  
+Develop an Online Gender-Based Violence (OGBV) lexicon database that is relevant for African languages and contexts to address the prevalence of OGBV and promote awareness.
 
-        Using this, one needs to have four API access keys in order to be successful with it.
+**Other Objectives:**  
+- Propose an architecture for an online lexicon generation and update system using AI techniques.
+- Ensure the availability of lexicons for various African languages to document the different linguistic variations.
+- Enhance the realism of corpora by incorporating cultural nuances and slang from different regions.
+- Incorporate new terms from reference materials to improve the efficiency of OGBV detectors.
+- Establish a web-based tool that enables easy search and reorganization of lexicons by researchers and policymakers.
 
-        check on the developer portal for the API keys and make sure you get the right ones, for example facebook required the users key and not normal access key that is explicit on their site
+---
+
+## **4. Implementation**
+
+**Data Collection:**  
+Data is collected from social networks, forums, and other sites reporting OGBV cases using web scraping tools like **Scrapy** or via APIs.
+
+**NLP and AI Integration:**  
+The data is analyzed using advanced NLP models such as **BERT** or **GPT** to detect and categorize abusive language relevant to African languages. Techniques like text classification and entity recognition are employed to identify OGBV-related terms and phrases.
+
+**Real-Time Updates:**  
+A pipeline is created to feed fresh abusive language patterns into the lexicons, ensuring they remain up-to-date and relevant, thereby improving detection accuracy.
+
+---
+
+## **5. Project Structure**
+
+```bash
+├── README.md
+├── manage.py
+├── ogbv_monitoring/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+├── monitor/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── views.py
+│   ├── twitter_client.py
+│   ├── facebook_client.py
+│   ├── instagram_client.py
+│   ├── anonymizer.py
+│   ├── templates/
+│   │   ├── monitor/
+│   │   │   └── base.html
+│   │   │   └── home.html
+│   │   │   └── dashboard.html
+│   │   │   └── report.html
+│   │   │   └── login.html
+│   │   │   └── logout_confirmation.html
+│   │   │   └── Transparency.html
+│   │   │   └── unauthorized.html
+├── data/
+│   ├── data_*.json
+│   ├── analysis_results.json
+└── requirements.txt
+```
+
+---
+
+## **6. Prerequisites for the Creation of Environment**
+
+Ensure your environment meets the following requirements:
+
+1. Python 3.7+
+2. Django 3.0+
+3. Scrapy
+4. Tweepy
+5. Requests
+6. TextBlob
+7. LangDetect
+8. xhtml2pdf
+9. OpenAI API Key (used for evaluating results and feedback)
+
+---
+
+## **7. Setup Instructions**
+
+**Clone the Repository:**
+
+```bash
+git clone {git link}
+cd ogbv-lexicon-monitoring
+```
+
+**Creating and Activating a Virtual Environment (Windows OS Machine):**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  
+```
+
+**Install Dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+**Set Up Environment Variables:**  
+In the Django settings file:
+
+```plaintext
+TWITTER_API_KEY=your_twitter_api_key
+TWITTER_API_SECRET_KEY=your_twitter_api_secret_key
+TWITTER_ACCESS_TOKEN=your_twitter_access_token
+TWITTER_ACCESS_TOKEN_SECRET=your_twitter_access_token_secret
+TWITTER_BEARER_TOKEN=your_twitter_bearer_token
+FACEBOOK_ACCESS_TOKEN=your_facebook_access_token
+INSTAGRAM_ACCESS_TOKEN=your_instagram_access_token
+OPENAI_API_KEY=your_openai_api_key
+```
+
+**Run Migrations:**
+
+```bash
+python manage.py migrate
+```
+
+**Create a Superuser:**
+
+```bash
+python manage.py createsuperuser
+```
+
+**Start the Development Server:**
+
+```bash
+python manage.py runserver
+```
+
+**Access the Application:**  
+Open your web browser and navigate to `http://127.0.0.1:8000/`.
+
+---
+
+## **8. Running the System**
+
+### **8.1 User Authentication**
+Navigate to the login page: `http://127.0.0.1:8000/login/`. Enter your credentials, and upon successful authentication, you will be directed to the dashboard.
+
+### **8.2 The Emergence of Social Media Streams**
+The system supports real-time data collection from various social media platforms:
+
+- **Twitter:** Start the stream at `http://127.0.0.1:8000/start-twitter-stream/`.
+- **Facebook:** Open `http://127.0.0.1:8000/start-facebook-stream/` to start streaming Facebook data.
+- **Instagram:** Collect Instagram data at `http://127.0.0.1:8000/start-instagram-stream/`.
+
+### **8.3 Viewing the Dashboard**
+Access the dashboard at `http://127.0.0.1:8000/dashboard/` to view:
+- The latest tweets/posts tagged for OGBV.
+- The total number of entries for each ID.
+- Sentiment analysis charts based on temporal data.
+
+### **8.4 Generating Reports**
+Generate a PDF report by navigating to `http://127.0.0.1:8000/generate-report/`. The report will include the latest data and be saved as ‘ogbv_report.pdf’.
+
+### **8.5 Accessing Non-Hypertext and Clandestine Sections**
+These sections provide additional context:
+
+- **Transparency:** `http://127.0.0.1:8000/transparency/`
+- **Unauthorized Access:** `http://127.0.0.1:8000/unauthorized/`
+
+---
+
+## **9. Expected Outcomes**
+
+- **Centralized Database:** Continual archive of current OGBV lexica.
+- **Improved Detection:** Enhanced analysis of abusive language in African contexts.
+- **User-Friendly Interface:** Accessible to researchers and policymakers.
+
+---
+
+## **10. Advantages Over Traditional Methods**
+
+- **Dynamic and Real-Time Updates:** Provides accurate, up-to-date lexical semantics.
+- **Linguistic and Cultural Relevance:** Tailored to African languages and contexts.
+- **Comprehensive Data Collection:** Gathers data from multiple sources, offering a broader perspective on abusive language trends.
+
+---
+
+## **11. Challenges and Mitigation Strategies**
+
+### **Data Privacy**
+**Challenge:** Managing the large volumes of user data while ensuring personal privacy.  
+**Mitigation:** Implement data anonymization to comply with data protection laws.
+
+### **NLP Model Limitations**
+**Challenge:** NLP models may struggle with context shifts, irony, or sarcasm.  
+**Mitigation:** Regular training with new datasets and continuous model improvement.
+
+### **Real-Time Processing**
+**Challenge:** Real-time data processing can be resource-intensive.  
+**Mitigation:** Integrate cost-effective cloud-based tools and optimize data flow processes.
+
+---
+
+## **12. Troubleshooting**
+
+### **Server Not Starting**
+1. Ensure all dependencies are properly installed.
+2. Verify that the virtual environment is activated.
+
+### **API Key Errors**
+1. Check the `.env` file to ensure all API keys and tokens are correctly entered.
+2. Confirm that the API key has the necessary permissions.
+
+### **Database Migrations Fail**
+1. Run `python manage.py migrate` to apply migrations.
+2. Verify
